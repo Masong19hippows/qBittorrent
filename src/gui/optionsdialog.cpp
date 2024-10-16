@@ -887,6 +887,7 @@ void OptionsDialog::loadConnectionTabOptions()
     m_ui->textProxyPassword->setText(proxyConf.password);
     m_ui->checkProxyAuth->setChecked(proxyConf.authEnabled);
     m_ui->checkProxyHostnameLookup->setChecked(proxyConf.hostnameLookupEnabled);
+    m_ui->checkListenOnProxyLookup->setChecked(proxyConf.listenOnProxyEnabled);
 
     m_ui->checkProxyPeerConnections->setChecked(session->isProxyPeerConnectionsEnabled());
     m_ui->checkProxyBitTorrent->setChecked(Preferences::instance()->useProxyForBT());
@@ -936,6 +937,7 @@ void OptionsDialog::loadConnectionTabOptions()
     connect(m_ui->checkProxyBitTorrent, &QGroupBox::toggled, this, &ThisType::adjustProxyOptions);
     connect(m_ui->checkProxyPeerConnections, &QAbstractButton::toggled, this, &ThisType::enableApplyButton);
     connect(m_ui->checkProxyHostnameLookup, &QAbstractButton::toggled, this, &ThisType::enableApplyButton);
+    connect(m_ui->checkListenOnProxyLookup, &QAbstractButton::toggled, this, &ThisType::enableApplyButton);
     connect(m_ui->checkProxyRSS, &QAbstractButton::toggled, this, &ThisType::enableApplyButton);
     connect(m_ui->checkProxyMisc, &QAbstractButton::toggled, this, &ThisType::enableApplyButton);
 
@@ -979,6 +981,7 @@ void OptionsDialog::saveConnectionTabOptions() const
     proxyConf.username = getProxyUsername();
     proxyConf.password = getProxyPassword();
     proxyConf.hostnameLookupEnabled = m_ui->checkProxyHostnameLookup->isChecked();
+    proxyConf.listenOnProxyEnabled = m_ui->checkListenOnProxy->isChecked();
     proxyConfigManager->setProxyConfiguration(proxyConf);
 
     Preferences::instance()->setUseProxyForBT(m_ui->checkProxyBitTorrent->isChecked());
@@ -1646,6 +1649,7 @@ void OptionsDialog::adjustProxyOptions()
         m_ui->spinProxyPort->setEnabled(false);
 
         m_ui->checkProxyHostnameLookup->setEnabled(false);
+        m_ui->checkListenOnProxyLookup->setEnabled(false);
         m_ui->checkProxyRSS->setEnabled(false);
         m_ui->checkProxyMisc->setEnabled(false);
         m_ui->checkProxyBitTorrent->setEnabled(false);
@@ -1666,6 +1670,7 @@ void OptionsDialog::adjustProxyOptions()
             m_ui->labelProxyTypeIncompatible->setVisible(true);
 
             m_ui->checkProxyHostnameLookup->setEnabled(false);
+            m_ui->checkListenOnProxyLookup->setEnabled(true);
             m_ui->checkProxyRSS->setEnabled(false);
             m_ui->checkProxyMisc->setEnabled(false);
         }
@@ -1675,6 +1680,7 @@ void OptionsDialog::adjustProxyOptions()
             m_ui->labelProxyTypeIncompatible->setVisible(false);
 
             m_ui->checkProxyHostnameLookup->setEnabled(true);
+             m_ui->checkListenOnProxyLookup->setEnabled(true);
             m_ui->checkProxyRSS->setEnabled(true);
             m_ui->checkProxyMisc->setEnabled(true);
         }

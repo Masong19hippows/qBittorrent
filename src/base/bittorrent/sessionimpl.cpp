@@ -1874,6 +1874,7 @@ lt::settings_pack SessionImpl::loadLTSettings() const
 
         settingsPack.set_bool(lt::settings_pack::proxy_peer_connections, isProxyPeerConnectionsEnabled());
         settingsPack.set_bool(lt::settings_pack::proxy_hostnames, proxyConfig.hostnameLookupEnabled);
+        settingsPack.set_bool(lt::settings_pack::listen_on_proxy, proxyConfig.listenOnProxyEnabled);
     }
 
     settingsPack.set_bool(lt::settings_pack::announce_to_all_trackers, announceToAllTrackers());

@@ -496,6 +496,11 @@
             <label for="proxyHostnameLookupCheckbox">QBT_TR(Perform hostname lookup via proxy)QBT_TR[CONTEXT=OptionsDialog]</label>
         </div>
 
+        <div class="formRow">
+            <input type="checkbox" id="listenOnProxyCheckbox" title="QBT_TR(If checked, listening is enabled while using proxy.)QBT_TR[CONTEXT=OptionsDialog]">
+            <label for="listenOnProxyCheckbox">QBT_TR(Listen on defined listening port)QBT_TR[CONTEXT=OptionsDialog]</label>
+        </div>
+
         <fieldset class="settings">
             <legend>
                 <input type="checkbox" id="peer_proxy_auth_checkbox" onclick="qBittorrent.Preferences.updatePeerProxyAuthSettings();">
@@ -1935,6 +1940,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
             $("proxy_bittorrent_checkbox").disabled = isProxyDisabled;
             $("use_peer_proxy_checkbox").disabled = (isProxyDisabled || !$("proxy_bittorrent_checkbox").checked);
             $("proxyHostnameLookupCheckbox").disabled = (isProxyDisabled || isProxySocks4);
+            $("listenOnProxyCheckbox").disabled = (isProxyDisabled);
             $("proxy_rss_checkbox").disabled = (isProxyDisabled || isProxySocks4);
             $("proxy_misc_checkbox").disabled = (isProxyDisabled || isProxySocks4);
 
@@ -2319,6 +2325,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
                     $("peer_proxy_username_text").value = pref.proxy_username;
                     $("peer_proxy_password_text").value = pref.proxy_password;
                     $("proxyHostnameLookupCheckbox").checked = pref.proxy_hostname_lookup;
+                    $("listenOnProxyCheckbox").checked = pref.proxy_listen_on_proxy;
                     $("proxy_bittorrent_checkbox").checked = pref.proxy_bittorrent;
                     $("use_peer_proxy_checkbox").checked = pref.proxy_peer_connections;
                     $("proxy_rss_checkbox").checked = pref.proxy_rss;
@@ -2683,6 +2690,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
             settings["proxy_username"] = $("peer_proxy_username_text").value;
             settings["proxy_password"] = $("peer_proxy_password_text").value;
             settings["proxy_hostname_lookup"] = $("proxyHostnameLookupCheckbox").checked;
+            settings["proxy_listen_on_proxy"] = $("listenOnProxyCheckbox").checked;
             settings["proxy_bittorrent"] = $("proxy_bittorrent_checkbox").checked;
             settings["proxy_peer_connections"] = $("use_peer_proxy_checkbox").checked;
             settings["proxy_rss"] = $("proxy_rss_checkbox").checked;
