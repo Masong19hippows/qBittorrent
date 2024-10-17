@@ -2058,6 +2058,17 @@ readme[0-9].txt: filter 'readme1.txt', 'readme2.txt' but not 'readme10.txt'.</st
                 </widget>
                </item>
                <item>
+               <item>
+                <widget class="QCheckBox" name="checkListenOnProxy">
+                 <property name="toolTip">
+                  <string>If checked, lstening is enabled while using a proxy</string>
+                 </property>
+                 <property name="text">
+                  <string>Listen while using Proxy</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
                 <widget class="QGroupBox" name="checkProxyAuth">
                  <property name="enabled">
                   <bool>false</bool>
@@ -4047,6 +4058,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.</string>
   <tabstop>textProxyIP</tabstop>
   <tabstop>spinProxyPort</tabstop>
   <tabstop>checkProxyHostnameLookup</tabstop>
+  <tabstop>checkListenOnProxy</tabstop>
   <tabstop>checkProxyAuth</tabstop>
   <tabstop>textProxyUsername</tabstop>
   <tabstop>textProxyPassword</tabstop>

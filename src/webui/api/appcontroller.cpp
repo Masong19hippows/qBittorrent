@@ -245,6 +245,7 @@ void AppController::preferencesAction()
     data[u"proxy_username"_s] = proxyConf.username;
     data[u"proxy_password"_s] = proxyConf.password;
     data[u"proxy_hostname_lookup"_s] = proxyConf.hostnameLookupEnabled;
+    data[u"proxy_listen_on_proxy"_s] = proxyConf.listenOnProxyEnabled;
 
     data[u"proxy_bittorrent"_s] = pref->useProxyForBT();
     data[u"proxy_peer_connections"_s] = session->isProxyPeerConnectionsEnabled();
@@ -735,6 +736,8 @@ void AppController::setPreferencesAction()
         proxyConf.password = it.value().toString();
     if (hasKey(u"proxy_hostname_lookup"_s))
         proxyConf.hostnameLookupEnabled = it.value().toBool();
+     if (hasKey(u"proxy_listen_on_proxy"_s))
+        proxyConf.listenOnProxyEnabled = it.value().toBool();
     proxyManager->setProxyConfiguration(proxyConf);
 
     if (hasKey(u"proxy_bittorrent"_s))

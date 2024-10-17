@@ -67,7 +67,7 @@ ProxyConfigurationManager::ProxyConfigurationManager(QObject *parent)
     m_config.username = m_storeProxyUsername;
     m_config.password = m_storeProxyPassword;
     m_config.hostnameLookupEnabled = m_storeProxyHostnameLookupEnabled.get(true);
-    m_config.listenOnProxyEnabled = m_storeProxyListenOnProxyEnabled.get(true);
+    m_config.listenOnProxyEnabled = m_storeProxyListenOnProxyEnabled.get(false);
 }
 
 void ProxyConfigurationManager::initInstance()

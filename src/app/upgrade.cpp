@@ -398,6 +398,9 @@ namespace
         const auto proxyHostnameLookup = settingsStorage->loadValue<bool>(u"BitTorrent/Session/ProxyHostnameLookup"_s);
         settingsStorage->storeValue(u"Network/Proxy/HostnameLookupEnabled"_s, proxyHostnameLookup);
         settingsStorage->removeValue(u"BitTorrent/Session/ProxyHostnameLookup"_s);
+
+        const auto listenOnProxy = settingsStorage->loadValue<bool>(u"BitTorrent/Session/ListenOnProxy"_s);
+        settingsStorage->storeValue(u"Network/Proxy/ListenOnProxyEnabled"_s, listenOnProxy);
     }
 
 #ifdef Q_OS_WIN

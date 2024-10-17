@@ -1940,7 +1940,7 @@ Use ';' to split multiple entries. Can use wildcard '*'.)QBT_TR[CONTEXT=OptionsD
             $("proxy_bittorrent_checkbox").disabled = isProxyDisabled;
             $("use_peer_proxy_checkbox").disabled = (isProxyDisabled || !$("proxy_bittorrent_checkbox").checked);
             $("proxyHostnameLookupCheckbox").disabled = (isProxyDisabled || isProxySocks4);
-            $("listenOnProxyCheckbox").disabled = (isProxyDisabled);
+            $("listenOnProxyCheckbox").disabled = isProxyDisabled;
             $("proxy_rss_checkbox").disabled = (isProxyDisabled || isProxySocks4);
             $("proxy_misc_checkbox").disabled = (isProxyDisabled || isProxySocks4);
 
