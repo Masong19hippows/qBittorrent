@@ -38,7 +38,7 @@ bool Net::operator==(const ProxyConfiguration &left, const ProxyConfiguration &r
             && (left.authEnabled == right.authEnabled)
             && (left.username == right.username)
             && (left.password == right.password)
-            && (left.hostnameLookupEnabled == right.hostnameLookupEnabled);
+            && (left.hostnameLookupEnabled == right.hostnameLookupEnabled)
             && (left.listenOnProxyEnabled == right.listenOnProxyEnabled);
 }
 
